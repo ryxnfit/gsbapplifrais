@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * permet de récupérer les visiteurs
+ */
 function getLesVisiteurs($pdo)
 {
 		$req = "select * from visiteur";
@@ -7,6 +9,9 @@ function getLesVisiteurs($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
+/*
+ * permet de récupérer les fiches de frais
+ */
 function getLesFichesFrais($pdo)
 {
 		$req = "select * from ficheFrais";
@@ -14,6 +19,9 @@ function getLesFichesFrais($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
+/*
+ * permet de récupérer les identifiants (visiteurs) des fiches de frais
+ */
 function getLesIdFraisForfait($pdo)
 {
 		$req = "select fraisforfait.id as id from fraisforfait order by fraisforfait.id";
@@ -21,6 +29,9 @@ function getLesIdFraisForfait($pdo)
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 }
+/*
+ * permet de récupérer le dernier mois des fiches de frais d'un visiteur
+ */
 function getDernierMois($pdo, $idVisiteur)
 {
 		$req = "select max(mois) as dernierMois from fichefrais where idVisiteur = '$idVisiteur'";
@@ -29,6 +40,9 @@ function getDernierMois($pdo, $idVisiteur)
 		return $laLigne['dernierMois'];
 
 }
+/*
+ * permet de récupérer le mois suivant
+ */
 function getMoisSuivant($mois){
 		$numAnnee =substr( $mois,0,4);
 		$numMois =substr( $mois,4,2);
@@ -44,6 +58,9 @@ function getMoisSuivant($mois){
 			$numMois="0".$numMois;
 		return $numAnnee.$numMois;
 }
+/*
+ * permet de récupérer le mois précédant
+ */
 function getMoisPrecedent($mois){
 		$numAnnee =substr( $mois,0,4);
 		$numMois =substr( $mois,4,2);
@@ -58,6 +75,9 @@ function getMoisPrecedent($mois){
 			$numMois="0".$numMois;
 		return $numAnnee.$numMois;
 }
+/*
+ * permet de créer une fiche de frais
+ */
 function creationFichesFrais($pdo)
 {
 	$lesVisiteurs = getLesVisiteurs($pdo);
@@ -101,6 +121,9 @@ function creationFichesFrais($pdo)
 		}
 	}
 }
+/*
+ * permet de créer une fiche de frais fotfaitaire
+ */
 function creationFraisForfait($pdo)
 {
 	$lesFichesFrais= getLesFichesFrais($pdo);
@@ -127,6 +150,9 @@ function creationFraisForfait($pdo)
 	}
 
 }
+/*
+ * permet de récupérer les fiches de frais hors-forfait
+ */
 function getDesFraisHorsForfait()
 {
 	$tab = array(
@@ -177,6 +203,9 @@ function getDesFraisHorsForfait()
 		);
 	return $tab;
 }
+/*
+ * permet de mettre à jour le mot de passe d'un visiteur
+ */
 function updateMdpVisiteur($pdo)
 {
 	$req = "select * from visiteur";
@@ -199,6 +228,9 @@ function updateMdpVisiteur($pdo)
 
 
 }
+/*
+ * permet de créer une fiche de frais hors-forfait
+ */
 function creationFraisHorsForfait($pdo)
 {
 	$desFrais = getDesFraisHorsForfait();
@@ -231,6 +263,9 @@ function creationFraisHorsForfait($pdo)
 		}
 	}
 }
+/*
+ * permet de récupérer un mois
+ */
 function getMois($date){
 		@list($jour,$mois,$annee) = explode('/',$date);
 		if(strlen($mois) == 1){
@@ -238,6 +273,9 @@ function getMois($date){
 		}
 		return $annee.$mois;
 }
+/*
+ * permet de mettre à jour une fiche de frais
+ */
 function majFicheFrais($pdo)
 {
 	
