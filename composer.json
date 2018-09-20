@@ -1,0 +1,14 @@
+{
+    "name": "vendor/gsb-appli-frais-v2",
+    "description": "Description of project gsbAppliFraisV2.",
+    "authors": [
+        {
+            "name": "Ryan",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "2.*"
+    }
+}
