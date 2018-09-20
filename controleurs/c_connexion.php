@@ -1,10 +1,10 @@
 ﻿<?php
 
 
-if(!isset($_REQUEST['action'])){
-	$_REQUEST['action'] = 'demandeConnexion';
+if(!isset($_POST['action'])){
+	$_SERVER['action'] = 'demandeConnexion';
 }
-$action = $_REQUEST['action'];
+else{$action = $_POST['action'];}
 switch($action){
 	
 	case 'demandeConnexion':{
@@ -12,8 +12,8 @@ switch($action){
 		break;
 	}
 	case 'valideConnexion':{
-		$login = $_REQUEST['login'];
-		$mdp = $_REQUEST ['mdp'];
+		$login = $_POST['login'];
+		$mdp = $_POST['mdp'];
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect");

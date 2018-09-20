@@ -4,9 +4,9 @@
 include("vues/v_sommaire.php");
 $idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));
-$numAnnee =substr( $mois,0,4);
-$numMois =substr( $mois,4,2);
-$action = $_REQUEST['action'];
+$numAnnee = substr($mois,0,4);
+$numMois = substr($mois,4,2);
+$action = $_POST['action'];
 switch($action){
 	case 'saisirFrais':{
             echo "ok";
@@ -17,7 +17,7 @@ switch($action){
 	}
 	case 'validerMajFraisForfait':{
                 
-		$lesFrais = $_REQUEST['lesFrais'];
+		$lesFrais = $_POST['lesFrais'];
 		if(lesQteFraisValides($lesFrais)){
 	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
 		}
@@ -28,9 +28,9 @@ switch($action){
 	  break;
 	}
 	case 'validerCreationFrais':{
-		$dateFrais = $_REQUEST['dateFrais'];
-		$libelle = $_REQUEST['libelle'];
-		$montant = $_REQUEST['montant'];
+		$dateFrais = $_POST['dateFrais'];
+		$libelle = $_POST['libelle'];
+		$montant = $_POST['montant'];
 		valideInfosFrais($dateFrais,$libelle,$montant);
 		if (nbErreurs() != 0 ){
 			include("vues/v_erreurs.php");
@@ -41,7 +41,7 @@ switch($action){
 		break;
 	}
 	case 'supprimerFrais':{
-		$idFrais = $_REQUEST['idFrais'];
+		$idFrais = $_POST['idFrais'];
 	    $pdo->supprimerFraisHorsForfait($idFrais);
 		break;
 	}

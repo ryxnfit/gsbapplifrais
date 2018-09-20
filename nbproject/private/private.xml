@@ -3,7 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/composer.json</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/controleurs/c_etatFrais.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_ajoutFrais.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/html2pdf.class.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_listeFraisForfait.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_listeFraisHorsForfait.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/GSB-GenerationDonneesV3.5/include/fct.inc.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/include/fct.inc.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_erreurs.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_etatFrais.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_listeMois.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/include/class.pdogsb.inc.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/index.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_sommaire.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/vues/v_connexion.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/controleurs/c_connexion.php</file>
+            <file>file:/C:/Users/Ryan/Documents/dossier%20remis%20aux%20étudiants/gsbapplifrais/controleurs/c_gererFrais.php</file>
         </group>
     </open-files>
 </project-private>
