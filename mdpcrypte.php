@@ -8,7 +8,7 @@
     }
     catch(Exception $e)
     {
-            echo'Echec de connexion à la BDD car';
+            echo'Echec de connexion Ã  la BDD car';
             die('Erreur :'.$e->getMessage());
     }
     

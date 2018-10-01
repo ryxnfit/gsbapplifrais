@@ -43,8 +43,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		  <li><a><?php echo $_SESSION['prenom']."  ".$_SESSION['nom']?></a></li>
-                  <li><a>
-                      <?php
+		  <li><a><?php
                     $typeProfil = $_SESSION['typeProfil'];
                     
                     switch($typeProfil)
@@ -56,7 +55,7 @@
                             echo "Comptable";
                             break;
                     }
-                  ?>
+                    ?>
                       </a></li>
         <li class="active"><a href="index.php?uc=connexion&action=deconnexion">Se déconnecter </a></li>
      </ul>

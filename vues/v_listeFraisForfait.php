@@ -6,7 +6,7 @@
 		  <legend>Eléments forfaitisés</legend>			
 		</div>
 		<div class="panel-body">
-			<form class="form-horizontal" role="form" method="POST"  action="index.php?uc=gererFrais&action=validerMajFraisForfait">
+			<form class="form-horizontal" method="POST" action="index.php?uc=gererFrais&action=validerMajFraisForfait">
 			  <div class="form-group">
 				<?php
 						foreach ($lesFraisForfait as $unFrais)
