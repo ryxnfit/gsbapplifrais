@@ -9,7 +9,6 @@ if ( this.nodeName.toLowerCase() != 'table' )
 {
 	_fnLog( null, 0, "Attempted to initialise DataTables on a node which is not a "+
 		"table: "+this.nodeName );
-	return;
 }
 
 /* Check to see if we are re-initialising a table */
@@ -20,7 +19,7 @@ for ( i=0, iLen=DataTable.settings.length ; i<iLen ; i++ )
 	{
 		if ( oInit === undefined || oInit.bRetrieve )
 		{
-			return DataTable.settings[i].oInstance;
+			DataTable.settings[i].oInstance;
 		}
 		else if ( oInit.bDestroy )
 		{
@@ -32,7 +31,6 @@ for ( i=0, iLen=DataTable.settings.length ; i<iLen ; i++ )
 			_fnLog( DataTable.settings[i], 0, "Cannot reinitialise DataTable.\n\n"+
 				"To retrieve the DataTables object for this table, pass no arguments or see "+
 				"the docs for bRetrieve and bDestroy" );
-			return;
 		}
 	}
 	
