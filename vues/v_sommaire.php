@@ -58,7 +58,6 @@
                     }
                   ?>
                       </a></li>
-		  <li><a>Visiteur médical</a></li>
         <li class="active"><a href="index.php?uc=connexion&action=deconnexion">Se déconnecter </a></li>
      </ul>
     </div><!-- /.navbar-collapse -->
