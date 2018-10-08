@@ -1,13 +1,18 @@
 <?php
+session_start();
 require_once("include/fct.inc.php");
 require_once ("include/class.pdogsb.inc.php");
-session_start();
+
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
-if(!isset($_REQUEST['uc']) || !$estConnecte){
+if(!isset($_GET['uc']) || !$estConnecte){
      $_GET['uc'] = 'connexion';
 }	 
-$uc = $_GET['uc'];
+else
+{
+    $uc = $_GET['uc'];
+}
+
 switch($uc){
 	case 'connexion':{
 		include("controleurs/c_connexion.php");

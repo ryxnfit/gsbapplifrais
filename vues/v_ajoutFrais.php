@@ -6,7 +6,7 @@ echo"
 <tr>
 	<td>Date du frais (jj/mois/aaaa)</td>
 	<td>
-		<input  type='text' name=dateFrais  size='30' maxlength='45'>
+		<input type='date' name='dateFrais'  size='30'>
 	</td>
 </tr>
 <tr>

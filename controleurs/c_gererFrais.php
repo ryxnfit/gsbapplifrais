@@ -1,18 +1,15 @@
 <?php
 
-
 include("vues/v_sommaire.php");
-<<<<<<< HEAD
-$id = $_SESSION['$id'];
+$action = $_GET['action'];
+$id = $_SESSION['id'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
-$action = $_REQUEST['action'];
 switch($action){
 	case 'saisirFrais':{
-            echo "ok";
-		if($pdo->estPremierFraisMois($idVisiteur,$mois)){
-			$pdo->creeNouvellesLignesFrais($idVisiteur,$mois);
+		if($pdo->estPremierFraisMois($id,$mois)){
+			$pdo->creeNouvellesLignesFrais($id,$mois);
 		}
 		break;
 	}
@@ -20,48 +17,7 @@ switch($action){
                 
 		$lesFrais = $_REQUEST['lesFrais'];
 		if(lesQteFraisValides($lesFrais)){
-	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
-		}
-		else{
-			ajouterErreur("Les valeurs des frais doivent �tre num�riques");
-			include("vues/v_erreurs.php");
-		}
-	  break;
-	}
-	case 'validerCreationFrais':{
-		$dateFrais = $_REQUEST['dateFrais'];
-		$libelle = $_REQUEST['libelle'];
-		$montant = $_REQUEST['montant'];
-		valideInfosFrais($dateFrais,$libelle,$montant);
-		if (nbErreurs() != 0 ){
-			include("vues/v_erreurs.php");
-		}
-		else{
-			$pdo->creeNouveauFraisHorsForfait($idVisiteur,$mois,$libelle,$dateFrais,$montant);
-		}
-		break;
-	}
-	case 'supprimerFrais':{
-		$idFrais = $_REQUEST['idFrais'];
-=======
-$idVisiteur = $_SESSION['idVisiteur'];
-$mois = getMois(date("d/m/Y"));
-$numAnnee = substr($mois,0,4);
-$numMois = substr($mois,4,2);
-$action = $_POST['action'];
-switch($action){
-	case 'saisirFrais':{
-            echo "ok";
-		if($pdo->estPremierFraisMois($idVisiteur,$mois)){
-			$pdo->creeNouvellesLignesFrais($idVisiteur,$mois);
-		}
-		break;
-	}
-	case 'validerMajFraisForfait':{
-                
-		$lesFrais = $_POST['lesFrais'];
-		if(lesQteFraisValides($lesFrais)){
-	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
+	  	 	$pdo->majFraisForfait($id,$mois,$lesFrais);
 		}
 		else{
 			ajouterErreur("Les valeurs des frais doivent �tre num�riques");
@@ -78,21 +34,40 @@ switch($action){
 			include("vues/v_erreurs.php");
 		}
 		else{
-			$pdo->creeNouveauFraisHorsForfait($idVisiteur,$mois,$libelle,$dateFrais,$montant);
+			$pdo->creeNouveauFraisHorsForfait($id,$mois,$libelle,$dateFrais,$montant);
 		}
 		break;
 	}
 	case 'supprimerFrais':{
 		$idFrais = $_POST['idFrais'];
->>>>>>> origin/v2
-	    $pdo->supprimerFraisHorsForfait($idFrais);
+                $id = $_SESSION['id'];
+                $mois = getMois(date("d/m/Y"));
+                $numAnnee = substr($mois,0,4);
+                $numMois = substr($mois,4,2);
+                $action = $_POST['action'];
+                $pdo->supprimerFraisHorsForfait($idFrais);
 		break;
+        }
+	case 'validerMajFraisForfait':{
+                
+		$lesFrais = $_POST['lesFrais'];
+		if(lesQteFraisValides($lesFrais)){
+	  	 	$pdo->majFraisForfait($id,$mois,$lesFrais);
+		}
+		else{
+			ajouterErreur("Les valeurs des frais doivent �tre num�riques");
+			include("vues/v_erreurs.php");
+		}
+	  break;
+	}
+	
+	case 'supprimerFrais':{
+		
 	}
 }
-$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
-$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
-$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$mois);
+
+$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($id,$mois);
+$lesFraisForfait= $pdo->getLesFraisForfait($id,$mois);
+$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($id,$mois);
 include("vues/v_listeFraisForfait.php");
 include("vues/v_listeFraisHorsForfait.php");
-
-?>
