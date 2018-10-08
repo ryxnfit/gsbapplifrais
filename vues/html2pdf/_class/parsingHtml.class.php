@@ -338,7 +338,7 @@ class HTML2PDF_parsingHtml
                     break;
 
                 case 'align':
-                    if ($name==='img') {
+                    if ($name=='img') {
                         unset($param[$key]);
                         $param['style'] .= 'float: '.$val.'; ';
                     } elseif ($name!=='table') {

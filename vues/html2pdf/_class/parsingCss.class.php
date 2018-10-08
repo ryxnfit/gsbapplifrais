@@ -1027,8 +1027,8 @@ class HTML2PDF_parsingCss
         $return = true;
 
         // only for P tag
-        if ($this->value['margin']['t']===null) $this->value['margin']['t'] = $this->value['font-size'];
-        if ($this->value['margin']['b']===null) $this->value['margin']['b'] = $this->value['font-size'];
+        if ($this->value['margin']['t']==null) $this->value['margin']['t'] = $this->value['font-size'];
+        if ($this->value['margin']['b']==null) $this->value['margin']['b'] = $this->value['font-size'];
 
         // force the text align to left, if asked by html2pdf
         if ($this->_onlyLeft) $this->value['text-align'] = 'left';

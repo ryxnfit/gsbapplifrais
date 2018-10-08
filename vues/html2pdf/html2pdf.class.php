@@ -356,9 +356,9 @@ if (!defined('__CLASS_HTML2PDF__')) {
             }
 
             // complete parameters
-            if ($dest===false) $dest = 'I';
-            if ($dest===true)  $dest = 'S';
-            if ($dest==='')    $dest = 'I';
+            if ($dest==false) $dest = 'I';
+            if ($dest==true)  $dest = 'S';
+            if ($dest=='')    $dest = 'I';
             if ($name=='')     $name='document.pdf';
 
             // clean up the destination
@@ -513,8 +513,8 @@ if (!defined('__CLASS_HTML2PDF__')) {
          */
         protected function _setDefaultMargins($left, $top, $right = null, $bottom = null)
         {
-            if ($right===null)  $right = $left;
-            if ($bottom===null) $bottom = 8;
+            if ($right==null)  $right = $left;
+            if ($bottom==null) $bottom = 8;
 
             $this->_defaultLeft   = $this->parsingCss->ConvertToMM($left.'mm');
             $this->_defaultTop    = $this->parsingCss->ConvertToMM($top.'mm');
@@ -617,9 +617,9 @@ if (!defined('__CLASS_HTML2PDF__')) {
         protected function _DEBUG_add($name, $level=null)
         {
             // if true : UP
-            if ($level===true) $this->_debugLevel++;
+            if ($level==true) $this->_debugLevel++;
 
-            $name   = str_repeat('  ', $this->_debugLevel). $name.($level===true ? ' Begin' : ($level===false ? ' End' : ''));
+            $name   = str_repeat('  ', $this->_debugLevel). $name.($level==true ? ' Begin' : ($level==false ? ' End' : ''));
             $time  = microtime(true);
             $usage = ($this->_debugOkUsage ? memory_get_usage() : 0);
             $peak  = ($this->_debugOkPeak ? memory_get_peak_usage() : 0);
@@ -635,7 +635,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
             $this->_debugLastTime = $time;
 
             // it false : DOWN
-            if ($level===false) $this->_debugLevel--;
+            if ($level==false) $this->_debugLevel--;
 
             return $this;
         }
@@ -900,7 +900,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
 
             $w = $sub->_maxX; // max width
             $h = $sub->_maxH; // max height
-            $e = ($res===null ? $sub->_maxE : 0); // maxnumber of elemets on the line
+            $e = ($res==null ? $sub->_maxE : 0); // maxnumber of elemets on the line
 
             // destroy the sub HTML
             $this->_destroySubHTML($sub);
@@ -968,7 +968,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
         protected function _createSubHTML(&$subHtml, $cellmargin=0)
         {
             // prepare the subObject, if never prepare before
-            if (HTML2PDF::$_subobj===null) {
+            if (HTML2PDF::$_subobj==null) {
                 $this->_prepareSubObj();
             }
 
@@ -1483,7 +1483,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
         protected function _drawRectangle($x, $y, $w, $h, $border, $padding, $margin, $background)
         {
             // if we are in a subpart or if height is null => return false
-            if ($this->_subPart || $this->_isSubPart || $h===null) return false;
+            if ($this->_subPart || $this->_isSubPart || $h==null) return false;
 
             // add the margin
             $x+= $margin;
@@ -3143,7 +3143,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 $borders = true;
             }
 
-            if ($param['value']==='') return true;
+            if ($param['value']=='') return true;
             if (!in_array($param['ec'], array('L', 'M', 'Q', 'H'))) $param['ec'] = 'H';
 
             $this->parsingCss->save();
@@ -3241,7 +3241,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
          */
         protected function _tag_open_WRITE($param)
         {
-            $fill = ($this->parsingCss->value['background']['color']!==null && $this->parsingCss->value['background']['image']===null);
+            $fill = ($this->parsingCss->value['background']['color']!==null && $this->parsingCss->value['background']['image']==null);
             if (in_array($this->parsingCss->value['id_tag'], array('fieldset', 'legend', 'div', 'table', 'tr', 'td', 'th'))) {
                 $fill = false;
             }
@@ -3360,7 +3360,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                     if ($add) $w-= $space;
 
                     // if we don't add any word, and if the first word is empty => useless space to skip
-                    if (!$add && $words[0][0]==='') {
+                    if (!$add && $words[0][0]=='') {
                         array_shift($words);
                     }
 
@@ -6236,7 +6236,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 $path = explode(' ', $path);
                 foreach ($path as $k => $v) {
                     $path[$k] = trim($v);
-                    if ($path[$k]==='') unset($path[$k]);
+                    if ($path[$k]=='') unset($path[$k]);
                 }
                 $path = array_values($path);
 
@@ -6282,7 +6282,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 $path = explode(' ', $path);
                 foreach ($path as $k => $v) {
                     $path[$k] = trim($v);
-                    if ($path[$k]==='') unset($path[$k]);
+                    if ($path[$k]=='') unset($path[$k]);
                 }
                 $path = array_values($path);
 
@@ -6333,7 +6333,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 $path = explode(' ', $path);
                 foreach ($path as $k => $v) {
                     $path[$k] = trim($v);
-                    if ($path[$k]==='') unset($path[$k]);
+                    if ($path[$k]=='') unset($path[$k]);
                 }
                 $path = array_values($path);
 
@@ -6349,7 +6349,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                     }
 
                     // read the new action (forcing if no action before)
-                    if (preg_match('/^[a-z]+$/i', $path[$k]) || $lastAction===null) {
+                    if (preg_match('/^[a-z]+$/i', $path[$k]) || $lastAction==null) {
                         $lastAction = $path[$k];
                         $k++;
                     }

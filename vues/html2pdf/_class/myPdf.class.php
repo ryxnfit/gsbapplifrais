@@ -552,8 +552,8 @@ class HTML2PDF_myPdf extends TCPDF
     public function setRotation($angle, $xC=null, $yC=null)
     {
         // if no center, rotate around the current posiition
-        if($xC === null) $xC=$this->x;
-        if($yC === null) $yC=$this->y;
+        if($xC == null) $xC=$this->x;
+        if($yC == null) $yC=$this->y;
 
         // prepare the coordinate
         $yC=($this->h-$yC)*$this->k;
@@ -1345,7 +1345,7 @@ class HTML2PDF_myPdf extends TCPDF
      */
     public function getMyNumPage($page=null)
     {
-        if ($page===null) {
+        if ($page==null) {
             $page = $this->page;
         }
 

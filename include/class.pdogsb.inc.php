@@ -19,7 +19,7 @@
 class PdoGsb{   		
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=gsbapplifrais';
-      	private static $user='root' ;
+      	private static $user='root';
       	private static $mdp='' ;
 		private static $monPdo;
 		private static $monPdoGsb=null;
@@ -85,7 +85,7 @@ class PdoGsb{
 		$nbLignes = count($lesLignes);
 		for ($i=0; $i<$nbLignes; $i++){
 			$date = $lesLignes[$i]['date'];
-			$lesLignes[$i]['date'] =  dateAnglaisVersFrancais($date);
+			$lesLignes[$i]['date'] = dateAnglaisVersFrancais($date);
 		}
 		return $lesLignes; 
 	}
