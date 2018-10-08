@@ -32,7 +32,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="btn btn-outline-secondary" href="index.php?uc=gererFrais&action=saisirFrais" class="btn btn-outline-secondary">Saisir mes fiches de frais</a>
-      </li>
+      </li>&nbsp;
       <li class="nav-item active">
         <a class="btn btn-outline-secondary" href="index.php?uc=etatFrais&action=selectionnerMois" >Mes fiches de frais</a>
       </li>
