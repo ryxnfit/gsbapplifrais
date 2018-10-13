@@ -4,6 +4,11 @@ include("vues/v_sommaire.php");
 $action = $_GET['action'];
 $id = $_SESSION['id'];
 
+if(!isset($_GET['action'])){
+	$_GET['action'] = 'demandeConnexion';
+}
+else{$action = $_GET['action'];}
+
 switch($action){
 	case 'selectionnerMois':{
 		$lesMois=$pdo->getLesMoisDisponibles($id);
@@ -16,7 +21,7 @@ switch($action){
 		break;
 	}
 	case 'voirEtatFrais':{
-		$leMois = $_REQUEST['lstMois']; 
+		$leMois = $_POST['lstMois']; 
 		$lesMois=$pdo->getLesMoisDisponibles($id);
 		$moisASelectionner = $leMois;
 		include("vues/v_listeMois.php");
@@ -33,3 +38,4 @@ switch($action){
 		include("vues/v_etatFrais.php");	
 	}
     }
+?>

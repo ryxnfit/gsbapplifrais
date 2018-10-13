@@ -5,8 +5,9 @@ require_once ("include/class.pdogsb.inc.php");
 
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
+
 if(!isset($_GET['uc']) || !$estConnecte){
-     $_GET['uc'] = 'connexion';
+     $uc = 'connexion';
 }	 
 else
 {

@@ -32,8 +32,9 @@ function deconnecter(){
  * @return la date au format anglais aaaa-mm-jj
 */
 function dateFrancaisVersAnglais($maDate){
-	@list($jour,$mois,$annee) = explode('/',$maDate);
-	return date('Y-m-d',mktime(0,0,0,$mois,$jour,$annee));
+    list($jour,$mois,$annee) = explode('/',$maDate);
+    
+    return date('Y-m-d',mktime(0,0,0,$mois,$jour,$annee));
 }
 /**
  * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa 
@@ -42,8 +43,9 @@ function dateFrancaisVersAnglais($maDate){
  * @return la date au format format français jj/mm/aaaa
 */
 function dateAnglaisVersFrancais($maDate){
-   @list($annee,$mois,$jour)=explode('-',$maDate);
-   $date="$jour"."/".$mois."/".$annee;
+   list($annee,$mois,$jour)=explode('-',$maDate);
+   $date=$jour."/".$mois."/".$annee;
+   
    return $date;
 }
 /**
@@ -53,11 +55,11 @@ function dateAnglaisVersFrancais($maDate){
  * @return le mois au format aaaamm
 */
 function getMois($date){
-		@list($jour,$mois,$annee) = explode('/',$date);
-		if(strlen($mois) == 1){
-			$mois = "0".$mois;
-		}
-		return $annee.$mois;
+    list($jour,$mois,$annee) = explode('/',$date);
+    if(strlen($mois) == 1){
+        $mois = "0".$mois;
+    }
+    return $annee.$mois;
 }
 
 /* gestion des erreurs*/
@@ -69,9 +71,8 @@ function getMois($date){
 */
 function estEntierPositif($valeur) {
 	return preg_match("/[^0-9]/", $valeur) == 0;
-	
 }
-
+    
 /**
  * Indique si un tableau de valeurs est constitué d'entiers positifs ou nuls
  
@@ -80,13 +81,14 @@ function estEntierPositif($valeur) {
 */
 function estTableauEntiers($tabEntiers) {
 	$ok = true;
-	if (isset($unEntier) ){
+	if (isset($unEntier)){
 		foreach($tabEntiers as $unEntier){
-			if(!estEntierPositif($unEntier)){
-		 		$ok=false; 
+                    if(!estEntierPositif($unEntier)){
+                        $ok=false;
 			}
-		}	
+                }
 	}
+        
 	return $ok;
 }
 /**
@@ -96,12 +98,17 @@ function estTableauEntiers($tabEntiers) {
  * @return vrai ou faux
 */
 function estDateDepassee($dateTestee){
+        $ok = false;
+        echo "ok";
 	$dateActuelle=date("d/m/Y");
-	@list($jour,$mois,$annee) = explode('/',$dateActuelle);
+	list($jour,$mois,$annee) = explode('/',$dateActuelle);
 	$annee--;
 	$AnPasse = $annee.$mois.$jour;
-	@list($jourTeste,$moisTeste,$anneeTeste) = explode('/',$dateTestee);
-	return ($anneeTeste.$moisTeste.$jourTeste < $AnPasse); 
+	list($jourTeste,$moisTeste,$anneeTeste) = explode('/',$dateTestee);
+        if ($anneeTeste.$moisTeste.$jourTeste < $AnPasse)
+            $ok = true;
+        
+	return $ok; 
 }
 /**
  * Vérifie la validité du format d'une date française jj/mm/aaaa 
@@ -110,21 +117,20 @@ function estDateDepassee($dateTestee){
  * @return vrai ou faux
 */
 function estDateValide($date){
-	$tabDate = explode('/',$date);
+	$tabDate = explode('/', dateAnglaisVersFrancais($date));
 	$dateOK = true;
-	if (count($tabDate) != 3) {
-	    $dateOK = false;
-    }
-    else {
-		if (!estTableauEntiers($tabDate)) {
-			$dateOK = false;
-		}
-		else {
-			if (!checkdate($tabDate[1], $tabDate[0], $tabDate[2])) {
-				$dateOK = false;
-			}
-		}
-    }
+        
+	if(count($tabDate) != 3)
+        {
+            $dateOK = false;
+        }
+        else {
+            if (!estTableauEntiers($tabDate)) {
+
+                $dateOK = false;
+            }
+        }
+        
 	return $dateOK;
 }
 
@@ -135,7 +141,8 @@ function estDateValide($date){
  * @return vrai ou faux
 */
 function lesQteFraisValides($lesFrais){
-	return estTableauEntiers($lesFrais);
+    
+    return estTableauEntiers($lesFrais);
 }
 /**
  * Vérifie la validité des trois arguments : la date, le libellé du frais et le montant 
@@ -145,31 +152,49 @@ function lesQteFraisValides($lesFrais){
  * @param $dateFrais 
  * @param $libelle 
  * @param $montant
+ * @return vrai ou faux
  */
 function valideInfosFrais($dateFrais,$libelle,$montant){
-	if($dateFrais==""){
+    $test = true;
+    
+    if($dateFrais == ""){
+        $test = false;
 		ajouterErreur("Le champ date ne doit pas être vide");
 	}
 	else{
-		if(!estDatevalide($dateFrais)){
+		if(estDateValide($dateFrais) == "false"){
+                    $test = false;
+                    echo "ok";
 			ajouterErreur("Date invalide");
 		}	
 		else{
-			if(estDateDepassee($dateFrais)){
+			if(estDateDepassee($dateFrais) == "true"){
+                            $test = false;
 				ajouterErreur("date d'enregistrement du frais dépassé, plus de 1 an");
 			}			
 		}
 	}
 	if($libelle == ""){
+            $test = false;
 		ajouterErreur("Le champ description ne peut pas être vide");
 	}
 	if($montant == ""){
-		ajouterErreur("Le champ montant ne peut pas être vide");
+            $test = false;
+            ajouterErreur("Le champ montant ne peut pas être vide");
 	}
-	else
-		if( !is_numeric($montant) ){
+	else{
+		if(!is_numeric($montant)){
+                    $test = false;
 			ajouterErreur("Le champ montant doit être numérique");
 		}
+                
+                if(estEntierPositif($montant) == "false"){
+                    $test = false;
+			ajouterErreur("Le champ montant doit être positif");
+                }
+        }
+        
+        return $test;
 }
 /**
  * Ajoute le libellé d'une erreur au tableau des erreurs 

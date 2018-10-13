@@ -12,20 +12,33 @@
 						{
 							$mois = $unMois['mois'];
 							$numAnnee =  $unMois['numAnnee'];
-							$numMois =  $unMois['numMois'];
+							$numMois = $unMois['numMois'];
+                                                        
+                                                        setlocale(LC_TIME, "fr_FR");
+                                                        $month_name = strftime("%B", mktime(0, 0, 0, $numMois, 10));
+                                                        
 							if($mois == $moisASelectionner){
-							?>
-							<option selected value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
-							<?php 
-							}
-							else{ ?>
-							<option value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
-							<?php 
-							}
-						
-						}
-								   
-								   ?>    
+                                                            ?>
+                                                        <option selected value="<?php echo $mois; ?>">
+                                                            <?php
+                                                                setlocale(LC_TIME, "fr_FR");
+                                                                $month_name = strftime("%B", mktime(0, 0, 0, $numMois, 10));
+                                                                echo $month_name." ".$numAnnee ?>
+                                                        </option>
+                                                         <?php
+                                                        }
+							else{
+                                                            ?>
+                                                            <option selected value="<?php echo $mois; ?>">
+                                                            <?php
+                                                                setlocale(LC_TIME, "fr_FR");
+                                                                $month_name = strftime("%B", mktime(0, 0, 0, $numMois, 10));
+                                                                echo $month_name." ".$numAnnee ?>
+                                                        </option>
+                                                            <?php
+                                                        }
+                                                }
+                                                ?>
 					</select>
 					<div class="form-horizontal">
 						<input class="form-control" id="ok" type="submit" value="Valider" />
